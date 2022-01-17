@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">groupe3</string>
+    <string name="bouton_calculer">Compute</string>
+    <string name="bouton_dernier_calcul">Last Compute</string>
+</resources>
