@@ -16,4 +16,6 @@
     <string name="button_8" translatable="false">8</string>
     <string name="button_9" translatable="false">9</string>
     <string name="button_0" translatable="false">0</string>
+    <string name="toolbar_nettoyer">Nettoyer</string>
+    <string name="toolbar_calculer">Calculer</string>
 </resources>

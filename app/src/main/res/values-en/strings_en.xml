@@ -3,4 +3,6 @@
     <string name="app_name">groupe3</string>
     <string name="bouton_calculer">Compute</string>
     <string name="bouton_dernier_calcul">Last Compute</string>
+    <string name="toolbar_nettoyer">Clear</string>
+    <string name="toolbar_calculer">Compute</string>
 </resources>
