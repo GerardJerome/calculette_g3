@@ -14,8 +14,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button boutonCalculer = findViewById(R.id.bouton_calculer);
+        Button boutonLastCompute = findViewById(R.id.boutonDernierCalcul);
         boutonCalculer.setOnClickListener(view -> lanceActiviteCalculer());
+        boutonLastCompute.setOnClickListener(view -> lanceDernierCalcul() );
 
+    }
+
+    private void lanceDernierCalcul() {
+        Intent i = new Intent(this,LastComputeActivity.class);
+        startActivity(i);
     }
 
     private void lanceActiviteCalculer() {
