@@ -12,5 +12,6 @@ public class LastComputeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_last_compute);
         Button boutonPrecedent = findViewById(R.id.boutonPrecedent);
+        boutonPrecedent.setOnClickListener(view -> finish());
     }
 }
