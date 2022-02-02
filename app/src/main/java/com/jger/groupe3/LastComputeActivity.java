@@ -2,16 +2,31 @@ package com.jger.groupe3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class LastComputeActivity extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_last_compute);
         Button boutonPrecedent = findViewById(R.id.boutonPrecedent);
+        TextView textViewCalcul = findViewById(R.id.lastCompute_textViewCalcul);
+        Integer premierElement = getIntent().getIntExtra("premierElement",0);
+        Integer deuxiemeElement = getIntent().getIntExtra("deuxiemeElement",0);
+        String symbol = getIntent().getStringExtra("symbol");
+        Long resultat = getIntent().getLongExtra("resultat",0L);
+        textViewCalcul.setText(premierElement
+                +" "
+                +symbol
+                +" "
+                +deuxiemeElement
+                +" = "
+                +resultat);
         boutonPrecedent.setOnClickListener(view -> finish());
     }
 }

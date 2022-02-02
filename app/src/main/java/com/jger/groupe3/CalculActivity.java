@@ -110,29 +110,42 @@ public class CalculActivity extends AppCompatActivity {
     }
 
     private boolean calculResultat() {
-        Long resultat = 0L;
-        switch (typeOperation){
-            case ADD:
-                resultat = (long) (premierElement + deuxiemeElement);
-                break;
-            case MULTIPLY:
-                resultat = (long) (premierElement*deuxiemeElement);
-                break;
-            case SUBSTRACT:
-                resultat = (long) (premierElement-deuxiemeElement);
-                break;
-            case DIVIDE:
-                resultat = (long) (premierElement/deuxiemeElement);
-                break;
-            default:
-                Toast.makeText(this,getString(R.string.ERREUR_INCOMPLET),Toast.LENGTH_LONG).show();
+        try{
+            Long resultat = 0L;
+            switch (typeOperation){
+                case ADD:
+                    resultat = (long) (premierElement + deuxiemeElement);
+                    break;
+                case MULTIPLY:
+                    resultat = (long) (premierElement*deuxiemeElement);
+                    break;
+                case SUBSTRACT:
+                    resultat = (long) (premierElement-deuxiemeElement);
+                    break;
+                case DIVIDE:
+                    if(deuxiemeElement==0){
+                        throw  new DivideException();
+                    }else{
+                        resultat = (long) (premierElement/deuxiemeElement);
+                    }
+                    break;
+                default:
+                    Toast.makeText(this,getString(R.string.ERREUR_INCOMPLET),Toast.LENGTH_LONG).show();
+            }
+            ouvreLastComputeActivity(resultat);
+        }catch(DivideException e){
+            Toast.makeText(this,"Division par zero",Toast.LENGTH_LONG).show();
         }
-        ouvreLastComputeActivity();
+
         return true;
     }
 
-    private void ouvreLastComputeActivity() {
+    private void ouvreLastComputeActivity(Long resultat) {
         Intent i = new Intent(this,LastComputeActivity.class);
+        i.putExtra("premierElement",premierElement);
+        i.putExtra("deuxiemeElement",deuxiemeElement);
+        i.putExtra("symbol",typeOperation.getSymbol());
+        i.putExtra("resultat",resultat);
         startActivity(i);
     }
 }
