@@ -1,4 +1,4 @@
-package com.jger.groupe3;
+package com.jger.groupe3.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Type;
+import com.jger.groupe3.DivideException;
+import com.jger.groupe3.R;
+import com.jger.groupe3.TypeOperationEnum;
 
 public class CalculActivity extends AppCompatActivity {
     private Integer premierElement = 0;
@@ -145,7 +147,7 @@ public class CalculActivity extends AppCompatActivity {
     }
 
     private void ouvreLastComputeActivity(double resultat) {
-        Intent i = new Intent(this,LastComputeActivity.class);
+        Intent i = new Intent(this, LastComputeActivity.class);
         i.putExtra("premierElement",premierElement);
         i.putExtra("deuxiemeElement",deuxiemeElement);
         i.putExtra("symbol",typeOperation.getSymbol());

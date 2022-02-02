@@ -1,4 +1,4 @@
-package com.jger.groupe3;
+package com.jger.groupe3.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.jger.groupe3.R;
 
 public class LastComputeActivity extends AppCompatActivity {
 
