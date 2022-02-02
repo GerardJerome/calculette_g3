@@ -19,14 +19,19 @@ public class LastComputeActivity extends AppCompatActivity {
         Integer premierElement = getIntent().getIntExtra("premierElement",0);
         Integer deuxiemeElement = getIntent().getIntExtra("deuxiemeElement",0);
         String symbol = getIntent().getStringExtra("symbol");
-        Long resultat = getIntent().getLongExtra("resultat",0L);
-        textViewCalcul.setText(premierElement
-                +" "
-                +symbol
-                +" "
-                +deuxiemeElement
-                +" = "
-                +resultat);
+        Double resultat = getIntent().getDoubleExtra("resultat",0.0);
+        if(symbol!=null){
+            textViewCalcul.setText(premierElement
+                    +" "
+                    +symbol
+                    +" "
+                    +deuxiemeElement
+                    +" = "
+                    +resultat);
+        }else{
+            textViewCalcul.setText("");
+        }
+
         boutonPrecedent.setOnClickListener(view -> finish());
     }
 }

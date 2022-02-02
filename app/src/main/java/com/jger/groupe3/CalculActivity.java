@@ -111,36 +111,40 @@ public class CalculActivity extends AppCompatActivity {
 
     private boolean calculResultat() {
         try{
-            Long resultat = 0L;
-            switch (typeOperation){
-                case ADD:
-                    resultat = (long) (premierElement + deuxiemeElement);
-                    break;
-                case MULTIPLY:
-                    resultat = (long) (premierElement*deuxiemeElement);
-                    break;
-                case SUBSTRACT:
-                    resultat = (long) (premierElement-deuxiemeElement);
-                    break;
-                case DIVIDE:
-                    if(deuxiemeElement==0){
-                        throw  new DivideException();
-                    }else{
-                        resultat = (long) (premierElement/deuxiemeElement);
-                    }
-                    break;
-                default:
-                    Toast.makeText(this,getString(R.string.ERREUR_INCOMPLET),Toast.LENGTH_LONG).show();
+            Double resultat = 0.0;
+            if(typeOperation!=null){
+                switch (typeOperation){
+                    case ADD:
+                        resultat = (double) (premierElement + deuxiemeElement);
+                        break;
+                    case MULTIPLY:
+                        resultat = (double) (premierElement*deuxiemeElement);
+                        break;
+                    case SUBSTRACT:
+                        resultat = (double) (premierElement-deuxiemeElement);
+                        break;
+                    case DIVIDE:
+                        if(deuxiemeElement==0){
+                            throw  new DivideException();
+                        }else{
+                            resultat = (double) premierElement/deuxiemeElement;
+                        }
+                        break;
+
+                }
+                ouvreLastComputeActivity(resultat);
+            }else{
+                Toast.makeText(this,getString(R.string.ERREUR_INCOMPLET),Toast.LENGTH_LONG).show();
             }
-            ouvreLastComputeActivity(resultat);
+
         }catch(DivideException e){
-            Toast.makeText(this,"Division par zero",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getString(R.string.ERREUR_DIVISION_ZERO),Toast.LENGTH_LONG).show();
         }
 
         return true;
     }
 
-    private void ouvreLastComputeActivity(Long resultat) {
+    private void ouvreLastComputeActivity(double resultat) {
         Intent i = new Intent(this,LastComputeActivity.class);
         i.putExtra("premierElement",premierElement);
         i.putExtra("deuxiemeElement",deuxiemeElement);

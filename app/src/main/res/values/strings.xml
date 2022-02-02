@@ -20,4 +20,5 @@
     <string name="toolbar_calculer">Calculer</string>
     <string name="ERREUR_TROP_GRAND">Valeur trop grande</string>
     <string name="ERREUR_INCOMPLET">Calcul Incomplet</string>
+    <string name="ERREUR_DIVISION_ZERO">Division par zero</string>
 </resources>
