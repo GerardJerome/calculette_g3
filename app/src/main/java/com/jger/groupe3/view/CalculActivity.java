@@ -14,6 +14,10 @@ import android.widget.Toast;
 import com.jger.groupe3.DivideException;
 import com.jger.groupe3.R;
 import com.jger.groupe3.TypeOperationEnum;
+import com.jger.groupe3.database.CalculBaseHelper;
+import com.jger.groupe3.database.CalculDao;
+import com.jger.groupe3.entity.Calcul;
+import com.jger.groupe3.service.CalculService;
 
 public class CalculActivity extends AppCompatActivity {
     private Integer premierElement = 0;
@@ -21,11 +25,13 @@ public class CalculActivity extends AppCompatActivity {
     private TypeOperationEnum typeOperation;
     private TextView textViewCalcul;
     private Integer BORNE_HAUTE = 9999;
+    private CalculService calculService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcul);
+        calculService = new CalculService(new CalculDao(new CalculBaseHelper(this)));
         textViewCalcul = findViewById(R.id.textViewCalcul);
         Button bouton1 = findViewById(R.id.bouton_1);
         bouton1.setOnClickListener(view -> ajouteValeur(1));
@@ -134,6 +140,12 @@ public class CalculActivity extends AppCompatActivity {
                         break;
 
                 }
+                Calcul calcul = new Calcul();
+                calcul.setResultat(resultat);
+                calcul.setSymbol(typeOperation.getSymbol());
+                calcul.setPremierElement(premierElement);
+                calcul.setDeuxiemeElement(deuxiemeElement);
+                calculService.storeCalculInDatabase(calcul);
                 ouvreLastComputeActivity(resultat);
             }else{
                 Toast.makeText(this,getString(R.string.ERREUR_INCOMPLET),Toast.LENGTH_LONG).show();

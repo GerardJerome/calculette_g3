@@ -8,14 +8,20 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.jger.groupe3.R;
+import com.jger.groupe3.database.CalculBaseHelper;
+import com.jger.groupe3.database.CalculDao;
+import com.jger.groupe3.service.CalculService;
 
 public class LastComputeActivity extends AppCompatActivity {
+    private CalculService calculService;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_last_compute);
+
+        calculService = new CalculService(new CalculDao(new CalculBaseHelper(this)));
         Button boutonPrecedent = findViewById(R.id.boutonPrecedent);
         TextView textViewCalcul = findViewById(R.id.lastCompute_textViewCalcul);
         Integer premierElement = getIntent().getIntExtra("premierElement",0);
@@ -35,5 +41,9 @@ public class LastComputeActivity extends AppCompatActivity {
         }
 
         boutonPrecedent.setOnClickListener(view -> finish());
+        TextView nombreCalculTextView = findViewById(R.id.lastCompute_textViewNombreCalcul);
+        nombreCalculTextView.setText("Il y a "+calculService.getCalculNumber()+" dans la base de données");
     }
+
+
 }
