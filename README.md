@@ -34,6 +34,11 @@ les fonctionalité supplémentaire que vous aurez decidé d'ajouter
 1 note sur le design :
 J'évaluerais l'experience utilisateur de votre application , fonctionnement logique, taille des boutons etc...
 
+
+
+
+
+
 1 note sur la logique :
 
 Est ce le comportement attendu se réalise bien
@@ -42,3 +47,8 @@ Est ce le comportement attendu se réalise bien
 
 Est ce que les highscore se sauvegarde bien en base 
 
+
+# COntact :
+
+mail : jerome.gerard02@outlook.fr
+discord : Kazors#8920
